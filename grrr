@@ -1,5 +1,5 @@
 #!/bin/bash
-
+set -x
 
 GEOIP_REGION=$(curl -s freegeoip.net/csv/ | tr '[A-Z]' '[a-z]' | tr -d '"'| awk -F, '{print $2}')
 
@@ -12,5 +12,6 @@ curl -s http://www.apache.org/mirrors/mirrors.list | grep -v '^$' \
 REGION=us
 if grep -q " $GEOIP_REGION " $MIRRORLIST_FILE_NAME; then
     REGION=$GEOIP_REGION
+fi
     
 wget $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$1
