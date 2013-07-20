@@ -15,3 +15,5 @@ if grep -q " $GEOIP_REGION " $MIRRORLIST_FILE_NAME; then
 fi
     
 wget $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$1
+
+rm $MIRRORLIST_FILE_NAME
