@@ -23,7 +23,7 @@ if grep -q " $GEOIP_REGION " $MIRRORLIST_FILE_NAME; then
 fi
 
 # finally download it all
-wget $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$1
+wget $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$*
 
 # clean up after ourselves.
 rm $MIRRORLIST_FILE_NAME
