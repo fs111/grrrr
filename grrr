@@ -7,7 +7,7 @@
 GEOIP_REGION=$(wget -qO- freegeoip.net/csv/ | tr '[A-Z]' '[a-z]' | tr -d '"'| awk -F, '{print $2}')
 
 
-MIRRORLIST_FILE_NAME=$(tempfile)
+MIRRORLIST_FILE_NAME=$(mktemp)
 
 # download the latest mirror list from apache. we ignore the last
 # sync times and hope for the best...
