@@ -6,6 +6,10 @@
 # find out our region and yes, you can get this as csv file. How cool is that?
 GEOIP_REGION=$(wget -qO- freegeoip.net/csv/ | tr '[A-Z]' '[a-z]' | tr -d '"'| awk -F, '{print $2}')
 
+# classic confusion between geoip db and apache mirror list
+if [ $GEOIP_REGION == "gb" ]; then 
+    GEOIP_REGION=uk
+fi
 
 MIRRORLIST_FILE_NAME=$(mktemp)
 
