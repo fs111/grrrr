@@ -3,6 +3,8 @@
 # author: André Kelpe <efeshunderelf at googlemail.com
 # licencse: Apache v2
 
+GRRR_WGET_OPTIONS="--user-agent grrr/1.0"
+
 # find out our region and yes, you can get this as csv file. How cool is that?
 GEOIP_REGION=$(wget -qO- freegeoip.net/csv/ | tr '[A-Z]' '[a-z]' | tr -d '"'| awk -F, '{print $2}')
 
@@ -27,7 +29,7 @@ if grep -q " $GEOIP_REGION " $MIRRORLIST_FILE_NAME; then
 fi
 
 # finally download it all
-wget $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$*
+wget $GRRR_WGET_OPTIONS $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$*
 
 # clean up after ourselves.
 rm $MIRRORLIST_FILE_NAME
