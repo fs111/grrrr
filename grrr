@@ -18,7 +18,7 @@ MIRRORLIST_FILE_NAME=$(mktemp)
 # download the latest mirror list from apache. we ignore the last
 # sync times and hope for the best...
 wget -qO- http://www.apache.org/mirrors/mirrors.list | grep -v '^$' \
-    | grep http | grep -v '^#' > $MIRRORLIST_FILE_NAME
+    | grep http | grep -v ' 0$' | grep -v '^#' > $MIRRORLIST_FILE_NAME
 
 # use US as the default region. apache does the same in their scripts...
 REGION=us
