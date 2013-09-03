@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# author: André Kelpe <efeshunderelf at googlemail.com
+# author: André Kelpe <efeshunderelf at googlemail.com>
 # licencse: Apache v2
 
 GRRR_WGET_OPTIONS="--user-agent grrr/1.0"
