@@ -31,5 +31,9 @@ fi
 # finally download it all
 wget $GRRR_WGET_OPTIONS $(grep " $REGION " $MIRRORLIST_FILE_NAME | shuf | head -1 | awk '{print $3}')/$*
 
+retval=$?
+
 # clean up after ourselves.
 rm $MIRRORLIST_FILE_NAME
+
+exit $retval
